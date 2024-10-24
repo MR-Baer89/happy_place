@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/screens/details.dart';
+import 'package:happy_pleace/model/details.dart';
 
 class LocationDetailsScreen extends StatelessWidget {
   final Details details;

@@ -15,21 +15,44 @@ class ChatScreen extends StatelessWidget {
           style: TextStyle(color: hpwhite),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return const ListTile(
-                    title: Text('krjnj llm cnkjo knnikjn'),
-                  );
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Hey wie gehts dir?',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
             ),
-            const TextField(
+            SizedBox(
+              height: 16,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text('Gut und selbst?', style: TextStyle(fontSize: 20)),
+              ],
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                    'Schlechten Leuten geht es immer gut 🤣 .\nHast du heute schon was vor?',
+                    style: TextStyle(fontSize: 20)),
+              ],
+            ),
+            SizedBox(
+              height: 600,
+            ),
+            TextField(
               decoration: InputDecoration(hintText: 'Nachricht schreiben'),
             ),
           ],
