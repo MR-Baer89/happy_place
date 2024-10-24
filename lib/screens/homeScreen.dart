@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Location> locations = [
       Location(
-          locationTitle: 'Tolli_Park',
+          locationTitle: 'Tolli Park',
           locationAddress: 'Nikolaus-Otto-Straße 11',
           locationCity: '56727 Mayen',
           imagePath: 'assets/locations/tollipark.png',
@@ -65,21 +65,31 @@ class HomeScreen extends StatelessWidget {
           imagePath: 'assets/locations/bell.png',
           locationChildPrice: 9.50,
           locationAdultPrice: 13.50),
-    ]; // ... location data
+    ];
 
     return Scaffold(
+      backgroundColor: hpBlue,
       appBar: AppBar(
-        backgroundColor: hpBlue,
-        title: const Text('HappyPlace'),
+        backgroundColor: shadowBlue,
+        title: const Text(
+          'HappyPlace',
+          style: TextStyle(color: hpwhite, fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
+            icon: const Icon(
+              Icons.search,
+              color: hpwhite,
+            ),
             onPressed: () {
               // Implement search functionality
             },
           ),
           IconButton(
-            icon: const Icon(Icons.mic),
+            icon: const Icon(
+              Icons.mic,
+              color: hpwhite,
+            ),
             onPressed: () {
               // Implement voice search functionality
             },
@@ -89,15 +99,6 @@ class HomeScreen extends StatelessWidget {
       body: CustomScrollView(slivers: [
         SliverList(
           delegate: SliverChildListDelegate([
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(Icons.chat),
-                Icon(Icons.pool),
-                Icon(Icons.skateboarding),
-                Icon(Icons.attractions),
-              ],
-            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -106,17 +107,30 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: const Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.favorite_border),
-                    Text('Alle Kategorien'),
+                    Icon(
+                      Icons.list,
+                      size: 40,
+                    ),
+                    Text(
+                      'Alle Kategorien',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ],
                 ),
               ),
             ),
-            const Text('Favoriten'),
+            const Text(
+              'Favoriten',
+              style: TextStyle(
+                color: hpwhite,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ]),
         ),
         SliverGrid(
@@ -162,42 +176,31 @@ class HomeScreen extends StatelessWidget {
 class _categoryButtons extends StatelessWidget {
   _categoryButtons();
 
-  // List of category buttons
   final List<Widget> categoryButtons = [
     CategoryButton(
       text: 'Chats',
       icon: Icons.chat,
-      onPressed: () {
-        // Functionality for "Chats"
-      },
+      onPressed: () {},
     ),
     CategoryButton(
       text: 'Kalender',
       icon: Icons.calendar_month,
-      onPressed: () {
-        // Functionality for "Kalender"
-      },
+      onPressed: () {},
     ),
     CategoryButton(
       text: 'Indoor Spielplätze',
       icon: Icons.skateboarding,
-      onPressed: () {
-        // Functionality for "Indoor Spielplätze"
-      },
+      onPressed: () {},
     ),
     CategoryButton(
       text: 'FreizeitParks',
       icon: Icons.attractions,
-      onPressed: () {
-        // Functionality for "FreizeitParks"
-      },
+      onPressed: () {},
     ),
     CategoryButton(
       text: 'Schwimmbäder',
       icon: Icons.pool,
-      onPressed: () {
-        // Functionality for "Schwimmbäder"
-      },
+      onPressed: () {},
     ),
   ];
 
@@ -206,20 +209,25 @@ class _categoryButtons extends StatelessWidget {
     return Scaffold(
       backgroundColor: hpBlue,
       appBar: AppBar(
-        backgroundColor: hpBlue,
-        title: const Text('Kategorien'),
+        backgroundColor: shadowBlue,
+        title: const Text(
+          'Kategorien',
+          style: TextStyle(color: hpwhite, fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Implement search functionality
-            },
+            icon: const Icon(
+              Icons.search,
+              color: hpwhite,
+            ),
+            onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.mic),
-            onPressed: () {
-              // Implement voice search functionality
-            },
+            icon: const Icon(
+              Icons.mic,
+              color: hpwhite,
+            ),
+            onPressed: () {},
           ),
         ],
       ),
@@ -227,7 +235,7 @@ class _categoryButtons extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: categoryButtons,
           ),
         ),

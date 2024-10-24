@@ -7,5 +7,5 @@ final ThemeData lightTheme = ThemeData(
       bodyMedium: TextStyle(fontSize: mediumTextSize),
       headlineMedium: TextStyle(fontSize: lageTextSize),
       bodySmall: TextStyle(fontSize: smallTextSize)),
-  scaffoldBackgroundColor: hpBlue,
+  scaffoldBackgroundColor: shadowBlue,
 );

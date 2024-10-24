@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:happy_pleace/config/colors.dart';
 
 class CategoryButton extends StatelessWidget {
   final String text;
@@ -17,7 +18,7 @@ class CategoryButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue,
+        backgroundColor: shadowBlue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -25,9 +26,15 @@ class CategoryButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon),
-          const SizedBox(width: 10),
-          Text(text),
+          Icon(
+            icon,
+            color: hpwhite,
+          ),
+          const SizedBox(width: 8),
+          Text(
+            text,
+            style: const TextStyle(color: hpwhite, fontSize: 24),
+          ),
         ],
       ),
     );
