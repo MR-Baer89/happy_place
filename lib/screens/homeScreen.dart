@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
+import 'package:happy_pleace/model/details.dart';
 import 'package:happy_pleace/screens/detailScreens';
 import 'package:happy_pleace/widgets/category_button.dart';
 import 'package:happy_pleace/widgets/nav_bar.dart';
