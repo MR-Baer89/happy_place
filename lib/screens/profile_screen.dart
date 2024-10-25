@@ -16,19 +16,79 @@ class ProfileScreen extends StatelessWidget {
               fontSize: 24, color: hpwhite, fontWeight: FontWeight.bold),
         ),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              radius: 100,
-              backgroundImage: AssetImage('assets/images/mr_baer.png'),
-            ),
-            SizedBox(height: 20),
-            Text('Mr. Bär',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-            Text('mr.baer@hotmail.com'),
-          ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('assets/images/mr_baer.png'),
+              ),
+              const SizedBox(height: 20),
+              const Text('Mr. Bär',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+              const Text('mr.baer@hotmail.com'),
+              Container(
+                decoration: BoxDecoration(
+                  color: hpwhite,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.edit),
+                      title: const Text('Profil bearbeiten'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () {},
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const Icon(Icons.star_border_outlined),
+                      title: const Text('Favoriten'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () {},
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const Icon(Icons.settings),
+                      title: const Text('Einstellungen'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () {},
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const Icon(Icons.person_add),
+                      title: const Text('Freunde einladen'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () {},
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const Icon(
+                        Icons.logout,
+                        color: Colors.red,
+                      ),
+                      title: const Text(
+                        'Logout',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

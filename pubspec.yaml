@@ -13,14 +13,16 @@ dependencies:
   
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.9.2"  
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-flutter_icons:
-  android: true  
-  ios: true  
-  image_path: 'assets/images/appicon/'
+  flutter_launcher_icons: "^0.14.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: "launcher_icon"
+  image_path: 'assets/images/appicon/happy_place_icon.png'
+
 
 flutter:
   uses-material-design: true

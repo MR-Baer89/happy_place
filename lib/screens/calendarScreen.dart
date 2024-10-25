@@ -17,7 +17,6 @@ class TabelCalendarState extends State<TabelCalendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: hpBlue,
       appBar: AppBar(
         backgroundColor: shadowBlue,
         title: const Text('Kalender',
