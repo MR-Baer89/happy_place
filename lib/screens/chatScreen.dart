@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
+import 'package:happy_pleace/widgets/chatContainer.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -20,6 +21,10 @@ class ChatScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            ChatContainer(),
+            SizedBox(
+              height: 32,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -50,7 +55,7 @@ class ChatScreen extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 600,
+              height: 420,
             ),
             TextField(
               decoration: InputDecoration(hintText: 'Nachricht schreiben'),

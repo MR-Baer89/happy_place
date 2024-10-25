@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
+import 'package:happy_pleace/screens/calendarScreen.dart';
 import 'package:happy_pleace/screens/chatScreen.dart';
 import 'package:happy_pleace/screens/profile_screen.dart';
 
@@ -14,11 +15,14 @@ class NavBar extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const ChatScreen()));
         break;
       case 1:
-        // Replace with your home screen navigation logic (if applicable)
         break;
       case 2:
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const ProfileScreen()));
+        break;
+      case 3:
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const TabelCalendar()));
         break;
       default:
         print('Invalid navigation index');
@@ -52,6 +56,12 @@ class NavBar extends StatelessWidget {
           ),
           label: 'Profil',
         ),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.calendar_month,
+              color: hpwhite,
+            ),
+            label: 'Kalender'),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.menu,
