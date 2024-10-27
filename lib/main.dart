@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/screens/homeScreen.dart';
+import 'package:happy_pleace/screens/loginScreen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: HomeScreen(),
+          child: LoginPage(),
         ),
       ),
     );

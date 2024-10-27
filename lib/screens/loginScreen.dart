@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:happy_pleace/screens/homeScreen.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -42,7 +43,12 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
                   child: const Text('Log in'),
                 ),
                 const SizedBox(height: 20),
@@ -51,14 +57,7 @@ class LoginPage extends StatelessWidget {
                 // Buttons für Google, Facebook und Apple-Login
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Google Login Button
-                    // ...
-                    // Facebook Login Button
-                    // ...
-                    // Apple Login Button
-                    // ...
-                  ],
+                  children: [],
                 ),
               ],
             ),

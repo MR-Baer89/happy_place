@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
 import 'package:happy_pleace/model/details.dart';
+import 'package:happy_pleace/widgets/category_buttons.dart';
 import 'package:happy_pleace/screens/detailScreens';
-import 'package:happy_pleace/widgets/category_button.dart';
 import 'package:happy_pleace/widgets/nav_bar.dart';
 import 'package:happy_pleace/model/location.dart';
 
@@ -82,18 +82,14 @@ class HomeScreen extends StatelessWidget {
               Icons.search,
               color: hpwhite,
             ),
-            onPressed: () {
-              // Implement search functionality
-            },
+            onPressed: () {},
           ),
           IconButton(
             icon: const Icon(
               Icons.mic,
               color: hpwhite,
             ),
-            onPressed: () {
-              // Implement voice search functionality
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -104,7 +100,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => _categoryButtons()),
+                  MaterialPageRoute(builder: (context) => CategoryButtons()),
                 );
               },
               child: const Padding(
@@ -170,77 +166,6 @@ class HomeScreen extends StatelessWidget {
         ),
       ]),
       bottomNavigationBar: const NavBar(),
-    );
-  }
-}
-
-class _categoryButtons extends StatelessWidget {
-  _categoryButtons();
-
-  final List<Widget> categoryButtons = [
-    CategoryButton(
-      text: 'Chats',
-      icon: Icons.chat,
-      onPressed: () {},
-    ),
-    CategoryButton(
-      text: 'Kalender',
-      icon: Icons.calendar_month,
-      onPressed: () {},
-    ),
-    CategoryButton(
-      text: 'Indoor Spielplätze',
-      icon: Icons.skateboarding,
-      onPressed: () {},
-    ),
-    CategoryButton(
-      text: 'FreizeitParks',
-      icon: Icons.attractions,
-      onPressed: () {},
-    ),
-    CategoryButton(
-      text: 'Schwimmbäder',
-      icon: Icons.pool,
-      onPressed: () {},
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: hpBlue,
-      appBar: AppBar(
-        backgroundColor: shadowBlue,
-        title: const Text(
-          'Kategorien',
-          style: TextStyle(color: hpwhite, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: hpwhite,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.mic,
-              color: hpwhite,
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: categoryButtons,
-          ),
-        ),
-      ),
     );
   }
 }
