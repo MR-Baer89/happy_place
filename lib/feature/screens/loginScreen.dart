@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/screens/homeScreen.dart';
+import 'package:happy_pleace/feature/screens/homeScreen.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

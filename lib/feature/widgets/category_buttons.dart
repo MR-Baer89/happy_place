@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/widgets/category_button.dart';
+import 'package:happy_pleace/feature/widgets/category_button.dart';
 
 class CategoryButtons extends StatelessWidget {
   CategoryButtons({super.key});
