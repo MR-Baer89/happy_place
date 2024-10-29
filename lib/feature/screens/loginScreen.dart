@@ -59,7 +59,10 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Dein Logo hier
-                Image.asset('assets/images/happy_place.png'),
+                Container(
+                    height: 300,
+                    width: 300,
+                    child: Image.asset('assets/images/happy_place.png')),
                 const SizedBox(height: 20),
                 const Text(
                   'Login',
@@ -93,9 +96,14 @@ class _LoginPageState extends State<LoginPage> {
                 const Text('Oder'),
                 const SizedBox(height: 20),
                 // Buttons für Google, Facebook und Apple-Login
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
+                  children: [
+                    Container(
+                        height: 70,
+                        width: 400,
+                        child: Image.asset('assets/images/some.png'))
+                  ],
                 ),
               ],
             ),
