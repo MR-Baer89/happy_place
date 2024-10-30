@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
 
@@ -5,10 +6,10 @@ class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  RegistrationScreenState createState() => RegistrationScreenState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class RegistrationScreenState extends State<RegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -115,8 +116,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     final email = _emailController.text;
 
                     // Send data to backend or perform other actions
-                    print(
-                        'Username: $username, Password: $password, Email: $email');
+                    if (kDebugMode) {
+                      print(
+                          'Username: $username, Password: $password, Email: $email');
+                    }
                   }
                 },
                 style: ElevatedButton.styleFrom(
