@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
 import 'package:happy_pleace/feature/screens/homeScreen.dart';
+import 'package:happy_pleace/feature/screens/registrationsScreen.dart';
 
 class LoginPages extends StatelessWidget {
   const LoginPages({super.key});
@@ -90,20 +91,27 @@ class _LoginPageState extends State<LoginPage> {
                         MaterialPageRoute(
                             builder: (context) => const HomeScreen()));
                   },
-                  child: const Text('Log in'),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: shadowBlue, shadowColor: hpwhite),
+                  child: const Text(
+                    'Log in',
+                    style: TextStyle(color: hpwhite),
+                  ),
                 ),
                 const SizedBox(height: 20),
-                const Text('Oder'),
-                const SizedBox(height: 20),
-                // Buttons für Google, Facebook und Apple-Login
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        height: 70,
-                        width: 400,
-                        child: Image.asset('assets/images/some.png'))
-                  ],
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegistrationScreen()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: shadowBlue, shadowColor: hpwhite),
+                  child: const Text(
+                    'Account erstellen',
+                    style: TextStyle(color: hpwhite),
+                  ),
                 ),
               ],
             ),
