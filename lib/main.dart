@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/feature/screens/loginScreen.dart';
+import 'package:happy_pleace/feature/screens/login_screen.dart';
 
 void main() {
   runApp(const MainApp());

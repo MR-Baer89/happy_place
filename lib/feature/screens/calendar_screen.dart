@@ -11,7 +11,7 @@ class TabelCalendar extends StatefulWidget {
 
 class TabelCalendarState extends State<TabelCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
-  DateTime _focusedDay = DateTime.now();
+  DateTime focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
   @override
@@ -34,7 +34,7 @@ class TabelCalendarState extends State<TabelCalendar> {
           if (!isSameDay(_selectedDay, selectedDay)) {
             setState(() {
               _selectedDay = selectedDay;
-              _focusedDay = focusedDay;
+              focusedDay = focusedDay;
             });
           }
         },
@@ -46,7 +46,7 @@ class TabelCalendarState extends State<TabelCalendar> {
           }
         },
         onPageChanged: (focusedDay) {
-          _focusedDay = focusedDay;
+          focusedDay = focusedDay;
         },
       ),
     );

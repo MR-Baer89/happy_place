@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
 import 'package:happy_pleace/feature/model/details.dart';
+import 'package:happy_pleace/feature/screens/detail_screens';
 import 'package:happy_pleace/feature/widgets/category_buttons.dart';
-import 'package:happy_pleace/feature/screens/detailScreens';
 import 'package:happy_pleace/feature/widgets/nav_bar.dart';
 import 'package:happy_pleace/feature/model/location.dart';
 
