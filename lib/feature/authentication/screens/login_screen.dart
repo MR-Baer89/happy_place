@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/feature/screens/home_screen.dart';
-import 'package:happy_pleace/feature/screens/registrations_screen.dart';
+import 'package:happy_pleace/feature/home/screens/home_screen.dart';
+import 'package:happy_pleace/feature/authentication/screens/registrations_screen.dart';
 
 class LoginPages extends StatelessWidget {
   const LoginPages({super.key});
