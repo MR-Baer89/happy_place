@@ -1,20 +1,4 @@
-class Details {
-  final String locationTitle;
-  final String locationAddress;
-  final String locationCity;
-  final String imagePath;
-  final double locationChildPrice;
-  final double locationAdultPrice;
-
-  Details({
-    required this.locationTitle,
-    required this.locationAddress,
-    required this.locationCity,
-    required this.imagePath,
-    required this.locationChildPrice,
-    required this.locationAdultPrice,
-  });
-}
+import 'package:happy_pleace/feature/locations/model/details_model.dart';
 
 List<Details> detailData = [
   Details(

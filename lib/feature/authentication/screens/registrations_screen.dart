@@ -110,12 +110,10 @@ class RegistrationScreenState extends State<RegistrationScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Handle form submission here
                     final username = _usernameController.text;
                     final password = _passwordController.text;
                     final email = _emailController.text;
 
-                    // Send data to backend or perform other actions
                     if (kDebugMode) {
                       print(
                           'Username: $username, Password: $password, Email: $email');

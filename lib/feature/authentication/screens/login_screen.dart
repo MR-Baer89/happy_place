@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 207, 222, 243),
+      backgroundColor: hpBlue,
       appBar: AppBar(
         backgroundColor: shadowBlue,
         title: const Text('Login'),
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Dein Logo hier
-                Container(
+                SizedBox(
                     height: 300,
                     width: 300,
                     child: Image.asset('assets/images/happy_place.png')),
