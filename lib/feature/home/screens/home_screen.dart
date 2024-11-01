@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
 import 'package:happy_pleace/feature/locations/model/details_model.dart';
-
 import 'package:happy_pleace/feature/locations/model/location.dart';
 import 'package:happy_pleace/feature/locations/screens/detail_screens.dart';
 import 'package:happy_pleace/feature/locations/widgets/category_buttons.dart';
@@ -101,7 +100,8 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CategoryButtons()),
+                  MaterialPageRoute(
+                      builder: (context) => const CategoryButtons()),
                 );
               },
               child: const Padding(
