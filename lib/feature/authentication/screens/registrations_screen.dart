@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
+import 'package:happy_pleace/shared/repository/shared_preferences_repository.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -15,6 +16,9 @@ class RegistrationScreenState extends State<RegistrationScreen> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   bool _isPasswordVisible = false;
+
+  final SharedPreferencesRepository _sharedPreferencesRepository =
+      SharedPreferencesRepository();
 
   @override
   void dispose() {
@@ -108,15 +112,22 @@ class RegistrationScreenState extends State<RegistrationScreen> {
               ),
               const SizedBox(height: 32),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     final username = _usernameController.text;
                     final password = _passwordController.text;
                     final email = _emailController.text;
 
+                    // Save user credentials to SharedPreferences
+                    await _sharedPreferencesRepository.saveUserCredentials(
+                      username,
+                      password,
+                      email,
+                    );
+
                     if (kDebugMode) {
                       print(
-                          'Username: $username, Password: $password, Email: $email');
+                          'User registered: Username: $username, Password: $password, Email: $email');
                     }
                   }
                 },

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/feature/home/screens/home_screen.dart';
 import 'package:happy_pleace/feature/authentication/screens/registrations_screen.dart';
+import 'package:happy_pleace/feature/home/screens/home_screen.dart';
+import 'package:happy_pleace/shared/repository/shared_preferences_repository.dart';
 
 class LoginPages extends StatelessWidget {
   const LoginPages({super.key});
@@ -25,14 +26,32 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final String _correctUsername = 'Mr. Bär';
-  final String _correctPassword = 'Honey89';
 
-  void _login() {
+  final SharedPreferencesRepository _sharedPreferencesRepository =
+      SharedPreferencesRepository();
+
+  @override
+  void initState() {
+    super.initState();
+    _getUsernameFromSharedPrefs();
+  }
+
+  Future<void> _getUsernameFromSharedPrefs() async {
+    final username = await _sharedPreferencesRepository.getUsername();
+    if (username != null) {
+      _usernameController.text = username;
+    }
+  }
+
+  void _login() async {
     String username = _usernameController.text;
     String password = _passwordController.text;
 
-    if (username == _correctUsername && password == _correctPassword) {
+    // Check credentials using the repository
+    final isLoginSuccessful = await _sharedPreferencesRepository.login(
+        userName: username, password: password);
+
+    if (isLoginSuccessful) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -102,9 +121,11 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegistrationScreen()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegistrationScreen(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: shadowBlue, shadowColor: hpwhite),
