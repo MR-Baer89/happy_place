@@ -66,79 +66,81 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: hpBlue,
-      appBar: AppBar(
-        backgroundColor: shadowBlue,
-        title: const Text('Login'),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Dein Logo hier
-                SizedBox(
-                    height: 300,
-                    width: 300,
-                    child: Image.asset('assets/images/happy_place.png')),
-                const SizedBox(height: 20),
-                const Text(
-                  'Login',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  controller: _usernameController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: ('Benutzername')),
-                ),
-                const SizedBox(
-                  height: 32,
-                ),
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Passwort'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: shadowBlue, shadowColor: hpwhite),
-                  child: const Text(
-                    'Log in',
-                    style: TextStyle(color: hpwhite),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RegistrationScreen(),
+        backgroundColor: hpBlue,
+        appBar: AppBar(
+          backgroundColor: shadowBlue,
+          title: const Text('Login'),
+        ),
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Dein Logo hier
+                    SizedBox(
+                        height: 300,
+                        width: 300,
+                        child: Image.asset('assets/images/happy_place.png')),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Login',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    TextField(
+                      controller: _usernameController,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: ('Benutzername')),
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(), labelText: 'Passwort'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: shadowBlue, shadowColor: hpwhite),
+                      child: const Text(
+                        'Log in',
+                        style: TextStyle(color: hpwhite),
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: shadowBlue, shadowColor: hpwhite),
-                  child: const Text(
-                    'Account erstellen',
-                    style: TextStyle(color: hpwhite),
-                  ),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegistrationScreen(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: shadowBlue, shadowColor: hpwhite),
+                      child: const Text(
+                        'Account erstellen',
+                        style: TextStyle(color: hpwhite),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

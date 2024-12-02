@@ -15,14 +15,14 @@ class ChatContainer extends StatelessWidget {
       child: const Row(
         children: [
           CircleAvatar(
-              radius: 30,
+              radius: 20,
               backgroundImage: AssetImage('assets/profilimage/Anna.png')),
           SizedBox(width: 16),
           Expanded(
             child: Text(
               'Anna Schlosser',
               style: TextStyle(
-                  fontSize: 32, color: hpwhite, fontWeight: FontWeight.w500),
+                  fontSize: 16, color: hpwhite, fontWeight: FontWeight.w500),
             ),
           ),
         ],

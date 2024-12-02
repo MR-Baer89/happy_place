@@ -5,6 +5,7 @@ class Details {
   final String imagePath;
   final double locationChildPrice;
   final double locationAdultPrice;
+  final String route;
 
   Details({
     required this.locationTitle,
@@ -13,5 +14,6 @@ class Details {
     required this.imagePath,
     required this.locationChildPrice,
     required this.locationAdultPrice,
+    required this.route,
   });
 }

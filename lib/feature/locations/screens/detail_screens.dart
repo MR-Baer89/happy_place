@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
 import 'package:happy_pleace/feature/locations/model/details_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LocationDetailsScreen extends StatelessWidget {
   final Details details;
@@ -71,11 +72,16 @@ class LocationDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      final Uri url = Uri.parse(details.route);
+                      if (!await launchUrl(url)) {
+                        throw Exception('Could not launch $url');
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: shadowBlue, shadowColor: hpwhite),
                     child: const Text(
-                      'Show on Map',
+                      'Route anzeigen',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: hpwhite),
                     ),

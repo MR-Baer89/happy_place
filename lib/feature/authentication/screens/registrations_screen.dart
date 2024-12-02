@@ -118,7 +118,6 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                     final password = _passwordController.text;
                     final email = _emailController.text;
 
-                    // Save user credentials to SharedPreferences
                     await _sharedPreferencesRepository.saveUserCredentials(
                       username,
                       password,
