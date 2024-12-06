@@ -1,13 +1,5 @@
 import 'package:happy_pleace/feature/locations/model/details_model.dart';
 
-class LocationRoute {
-  final String uri;
-
-  LocationRoute(this.uri);
-
-  Uri get launchableUri => Uri.parse(uri);
-}
-
 List<Details> detailData = [
   Details(
       locationTitle: 'Tolli Park',
