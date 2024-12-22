@@ -47,7 +47,6 @@ class _LoginPageState extends State<LoginPage> {
     String username = _usernameController.text;
     String password = _passwordController.text;
 
-    // Check credentials using the repository
     final isLoginSuccessful = await _sharedPreferencesRepository.login(
         userName: username, password: password);
 
@@ -79,7 +78,6 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Dein Logo hier
                     SizedBox(
                         height: 300,
                         width: 300,
