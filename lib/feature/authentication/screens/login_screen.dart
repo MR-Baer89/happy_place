@@ -70,8 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 32,
                   ),
                   TextField(
-                    controller:
-                        TextEditingController(), // No longer needed with Provider
+                    controller: TextEditingController(),
                     obscureText: true,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: 'Passwort'),
