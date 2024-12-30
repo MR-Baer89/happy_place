@@ -5,17 +5,15 @@ import 'package:happy_pleace/shared/repository/shared_preferences_repository.dar
 class LoginProvider extends ChangeNotifier {
   final SharedPreferencesRepository _sharedPreferencesRepository;
   final TextEditingController usernameController;
-  final TextEditingController passwordController; // Add passwordController here
+  final TextEditingController passwordController;
 
   LoginProvider(this._sharedPreferencesRepository)
       : usernameController = TextEditingController(),
-        passwordController =
-            TextEditingController(); // Initialize passwordController
+        passwordController = TextEditingController();
 
   Future<void> login(BuildContext context) async {
     String username = usernameController.text;
-    String password =
-        passwordController.text; // Access passwordController correctly
+    String password = passwordController.text;
 
     final isLoginSuccessful = await _sharedPreferencesRepository.login(
         userName: username, password: password);
