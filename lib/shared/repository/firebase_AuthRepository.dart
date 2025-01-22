@@ -1,8 +1,7 @@
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:happy_pleace/shared/model/user_data.dart';
-import 'package:happy_pleace/shared/repository/auth_repository';
+import 'package:happy_pleace/shared/repository/auth_repository.dart';
 
 class FirebaseAuthRepository implements AuthRepository {
   FirebaseAuth auth = FirebaseAuth.instance;

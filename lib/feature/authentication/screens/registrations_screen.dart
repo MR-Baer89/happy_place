@@ -1,31 +1,55 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/shared/repository/shared_preferences_repository.dart';
+import 'package:happy_pleace/feature/home/screens/home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
   @override
-  RegistrationScreenState createState() => RegistrationScreenState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
-class RegistrationScreenState extends State<RegistrationScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
-  bool _isPasswordVisible = false;
+  final _passwordController = TextEditingController();
 
-  final SharedPreferencesRepository _sharedPreferencesRepository =
-      SharedPreferencesRepository();
-
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _passwordController.dispose();
-    _emailController.dispose();
-    super.dispose();
+  Future<void> _register() async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Registrierung erfolgreich!')),
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Das Passwort ist zu schwach')),
+          );
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Die E-Mail-Adresse ist bereits vergeben')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Ein Fehler ist aufgetreten: ${e.message}')),
+          );
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
   }
 
   @override
@@ -33,113 +57,41 @@ class RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: hpBlue,
       appBar: AppBar(
-        backgroundColor: shadowBlue,
-        title: const Text('Registrierung'),
-      ),
+          backgroundColor: shadowBlue, title: const Text('Registrierung')),
       body: Form(
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
-                controller: _usernameController,
-                decoration: const InputDecoration(
-                  labelText: 'Benutzername',
-                  hintText:
-                      'Mindestens 8 Zeichen, Buchstaben, Zahlen und Unterstriche',
-                  border: OutlineInputBorder(),
-                ),
+                controller: _emailController,
+                decoration: const InputDecoration(labelText: 'E-Mail'),
                 validator: (value) {
-                  if (value!.length < 8) {
-                    return 'Benutzername muss mindestens 8 Zeichen lang sein.';
-                  }
-                  if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(value)) {
-                    return 'Nur Buchstaben, Zahlen und Unterstriche erlaubt.';
+                  if (value!.isEmpty) {
+                    return 'Bitte gib eine E-Mail-Adresse ein';
                   }
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
               TextFormField(
                 controller: _passwordController,
-                obscureText: !_isPasswordVisible,
-                decoration: InputDecoration(
-                  labelText: 'Passwort',
-                  hintText:
-                      'Mindestens 8 Zeichen, Groß- und Kleinbuchstaben sowie eine Zahl',
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon: Icon(_isPasswordVisible
-                        ? Icons.visibility_off
-                        : Icons.visibility),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                  ),
-                ),
+                obscureText: true,
+                decoration: const InputDecoration(labelText: 'Passwort'),
                 validator: (value) {
-                  if (value!.length < 8) {
-                    return 'Passwort muss mindestens 8 Zeichen lang sein.';
-                  }
-                  if (!RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$')
-                      .hasMatch(value)) {
-                    return 'Passwort muss mindestens einen Groß- und Kleinbuchstaben sowie eine Zahl enthalten.';
+                  if (value!.isEmpty) {
+                    return 'Bitte gib ein Passwort ein';
                   }
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'E-Mail',
-                  hintText: 'Gültige E-Mail-Adresse',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (!RegExp(
-                          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-                      .hasMatch(value!)) {
-                    return 'Bitte gib eine gültige E-Mail-Adresse ein.';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 32),
               ElevatedButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    final username = _usernameController.text;
-                    final password = _passwordController.text;
-                    final email = _emailController.text;
-
-                    await _sharedPreferencesRepository.saveUserCredentials(
-                      username,
-                      password,
-                      email,
-                    );
-
-                    if (kDebugMode) {
-                      print(
-                          'User registered: Username: $username, Password: $password, Email: $email');
-                    }
-                  }
-                },
+                onPressed: _register,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: shadowBlue,
-                  shadowColor: hpwhite,
-                ),
+                    backgroundColor: shadowBlue, shadowColor: hpwhite),
                 child: const Text(
                   'Registrieren',
-                  style: TextStyle(
-                      color: hpwhite,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                  style: TextStyle(color: hpwhite),
                 ),
               ),
             ],
