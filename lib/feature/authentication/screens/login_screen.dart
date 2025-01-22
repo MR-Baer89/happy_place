@@ -1,8 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_pleace/config/colors.dart';
 import 'package:happy_pleace/feature/authentication/screens/registrations_screen.dart';
-import 'package:happy_pleace/feature/authentication/widgets/login_provider.dart';
-import 'package:happy_pleace/shared/repository/shared_preferences_repository.dart';
+import 'package:happy_pleace/feature/home/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class LoginPages extends StatelessWidget {
@@ -13,7 +13,7 @@ class LoginPages extends StatelessWidget {
     return MaterialApp(
       title: 'Login Screen',
       home: ChangeNotifierProvider(
-        create: (context) => LoginProvider(SharedPreferencesRepository()),
+        create: (context) => LoginProvider(FirebaseAuth.instance),
         child: const LoginPage(),
       ),
     );
@@ -28,8 +28,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -61,23 +66,30 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   TextField(
-                    controller: loginProvider.usernameController,
+                    controller: _emailController,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: ('E-mail')),
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
                     height: 32,
                   ),
                   TextField(
-                    controller: TextEditingController(),
+                    controller: _passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: 'Passwort'),
                   ),
                   ElevatedButton(
-                    onPressed: () => loginProvider.login(context),
+                    onPressed: () => loginProvider.login(
+                      context,
+                      _emailController.text,
+                      _passwordController.text,
+                    ),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: shadowBlue, shadowColor: hpwhite),
+                      backgroundColor: shadowBlue,
+                      shadowColor: hpwhite,
+                    ),
                     child: const Text(
                       'Log in',
                       style: TextStyle(color: hpwhite),
@@ -107,5 +119,33 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+}
+
+class LoginProvider extends ChangeNotifier {
+  final FirebaseAuth _auth;
+
+  LoginProvider(this._auth);
+
+  Future<void> login(
+      BuildContext context, String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // Benutzer erfolgreich angemeldet
+      print('User signed in: ${userCredential.user!.email}');
+      // Navigate to HomeScreen after successful login
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    } on FirebaseAuthException catch (e) {
+      // Fehlerbehandlung bei Anmeldefehlern
+      print(e.message);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.message!)),
+      );
+    }
   }
 }
