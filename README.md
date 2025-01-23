@@ -1,3 +1,3 @@
-# happy_pleace
+# happy_place
 
 A new Flutter project.
