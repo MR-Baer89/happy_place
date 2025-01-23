@@ -137,7 +137,7 @@ class LoginProvider extends ChangeNotifier {
 
       print('User signed in: ${userCredential.user!.email}');
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
     } on FirebaseAuthException catch (e) {
       print(e.message);
       ScaffoldMessenger.of(context).showSnackBar(
