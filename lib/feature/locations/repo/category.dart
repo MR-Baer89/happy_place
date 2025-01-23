@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/feature/locations/widgets/category_button.dart';
+import 'package:happy_place/feature/locations/widgets/category_button.dart';
 
 final List<Widget> categoryButtons = [
   CategoryButton(

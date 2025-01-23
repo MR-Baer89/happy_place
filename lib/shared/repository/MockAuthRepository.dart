@@ -1,5 +1,5 @@
-import 'package:happy_pleace/shared/model/user_data.dart';
-import 'package:happy_pleace/shared/repository/auth_repository.dart';
+import 'package:happy_place/shared/model/user_data.dart';
+import 'package:happy_place/shared/repository/auth_repository.dart';
 
 class MockAuthRepository implements AuthRepository {
   UserData? _currentUser;

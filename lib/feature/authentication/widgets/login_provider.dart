@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/feature/home/screens/home_screen.dart';
-import 'package:happy_pleace/shared/repository/shared_preferences_repository.dart';
+import 'package:happy_place/feature/home/screens/home_screen.dart';
+import 'package:happy_place/shared/repository/shared_preferences_repository.dart';
 
 class LoginProvider extends ChangeNotifier {
   final SharedPreferencesRepository _sharedPreferencesRepository;

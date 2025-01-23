@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/feature/locations/repo/details.dart';
-import 'package:happy_pleace/feature/locations/screens/detail_screens.dart';
-import 'package:happy_pleace/feature/locations/widgets/category_buttons.dart';
-import 'package:happy_pleace/shared/widgets/nav_bar.dart';
+import 'package:happy_place/config/colors.dart';
+import 'package:happy_place/feature/locations/repo/details.dart';
+import 'package:happy_place/feature/locations/screens/detail_screens.dart';
+import 'package:happy_place/feature/locations/widgets/category_buttons.dart';
+import 'package:happy_place/shared/widgets/nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

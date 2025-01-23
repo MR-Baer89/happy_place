@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/feature/authentication/screens/login_screen.dart';
-import 'package:happy_pleace/firebase_options.dart';
+import 'package:happy_place/feature/authentication/screens/login_screen.dart';
+import 'package:happy_place/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

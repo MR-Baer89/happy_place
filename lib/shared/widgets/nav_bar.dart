@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/feature/calendar/screens/calendar_screen.dart';
-import 'package:happy_pleace/feature/chat/screens/chat_screen.dart';
-import 'package:happy_pleace/feature/authentication/screens/profile_screen.dart';
+import 'package:happy_place/config/colors.dart';
+import 'package:happy_place/feature/authentication/screens/profile_screen.dart';
+import 'package:happy_place/feature/calendar/screens/calendar_screen.dart';
+import 'package:happy_place/feature/chat/screens/chat_screen.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/feature/home/screens/home_screen.dart';
+import 'package:happy_place/config/colors.dart';
+import 'package:happy_place/feature/home/screens/home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});

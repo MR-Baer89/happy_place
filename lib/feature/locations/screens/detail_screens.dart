@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/feature/locations/model/details_model.dart';
+import 'package:happy_place/config/colors.dart';
+import 'package:happy_place/feature/locations/model/details_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocationDetailsScreen extends StatelessWidget {

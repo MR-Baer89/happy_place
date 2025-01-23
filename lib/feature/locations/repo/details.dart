@@ -1,4 +1,4 @@
-import 'package:happy_pleace/feature/locations/model/details_model.dart';
+import 'package:happy_place/feature/locations/model/details_model.dart';
 
 List<Details> detailData = [
   Details(

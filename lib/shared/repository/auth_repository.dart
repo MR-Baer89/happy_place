@@ -1,4 +1,4 @@
-import 'package:happy_pleace/shared/model/user_data.dart';
+import 'package:happy_place/shared/model/user_data.dart';
 
 abstract class AuthRepository {
   Future<List<UserData>> getAllUsers();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/config/colors.dart';
-import 'package:happy_pleace/feature/chat/widgets/chatContainer.dart';
+import 'package:happy_place/config/colors.dart';
+import 'package:happy_place/feature/chat/widgets/chatContainer.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});

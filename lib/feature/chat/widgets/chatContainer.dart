@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:happy_pleace/config/colors.dart';
+import 'package:happy_place/config/colors.dart';
 
 class ChatContainer extends StatelessWidget {
   const ChatContainer({super.key});
