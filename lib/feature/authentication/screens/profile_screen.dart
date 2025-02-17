@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_place/config/colors.dart';
-import 'package:happy_place/feature/authentication/screens/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -31,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 20),
               const Text('Mr. Bär',
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-              const Text('mr.baer@hotmail.com'),
+              const Text('d-mueller29@t-online.de.'),
               Container(
                 decoration: BoxDecoration(
                   color: hpwhite,
@@ -47,40 +45,28 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    ListTile(
-                      leading: const Icon(Icons.edit),
-                      title: const Text('Profil bearbeiten'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // Navigate to edit profile screen
-                      },
+                    const ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text('Name: Dirk Müller'),
+                      trailing: Icon(Icons.chevron_right),
                     ),
                     const Divider(),
-                    ListTile(
-                      leading: const Icon(Icons.star_border_outlined),
-                      title: const Text('Favoriten'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // Navigate to favorites screen
-                      },
+                    const ListTile(
+                      leading: Icon(Icons.pin_drop_outlined),
+                      title: Text('Region: Westerwald'),
+                      trailing: Icon(Icons.chevron_right),
                     ),
                     const Divider(),
-                    ListTile(
-                      leading: const Icon(Icons.settings),
-                      title: const Text('Einstellungen'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // Navigate to settings screen
-                      },
+                    const ListTile(
+                      leading: Icon(Icons.child_friendly_outlined),
+                      title: Text('Kinder: Junge, Mädchen'),
+                      trailing: Icon(Icons.chevron_right),
                     ),
                     const Divider(),
-                    ListTile(
-                      leading: const Icon(Icons.person_add),
-                      title: const Text('Freunde einladen'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // Navigate to invite friends screen
-                      },
+                    const ListTile(
+                      leading: Icon(Icons.star_border_outlined),
+                      title: Text('Favoriten: Wildparks, Freizeitparks'),
+                      trailing: Icon(Icons.chevron_right),
                     ),
                     const Divider(),
                     ListTile(
@@ -92,20 +78,7 @@ class ProfileScreen extends StatelessWidget {
                         'Logout',
                         style: TextStyle(color: Colors.red),
                       ),
-                      onTap: () async {
-                        try {
-                          await FirebaseAuth.instance.signOut();
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPages()),
-                          );
-                        } catch (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Error during logout: $e')),
-                          );
-                        }
-                      },
+                      onTap: () {},
                     ),
                   ],
                 ),

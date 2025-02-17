@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:happy_place/config/colors.dart';
 import 'package:happy_place/feature/authentication/screens/profile_screen.dart';
+import 'package:happy_place/feature/authentication/screens/setting_screen.dart';
 import 'package:happy_place/feature/calendar/screens/calendar_screen.dart';
 import 'package:happy_place/feature/chat/screens/chat_screen.dart';
 
@@ -24,6 +25,9 @@ class NavBar extends StatelessWidget {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const TabelCalendar()));
         break;
+      case 4:
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const SettingScreen()));
       default:
         print('Invalid navigation index');
     }
