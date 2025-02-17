@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_place/config/colors.dart';
+import 'package:happy_place/feature/authentication/screens/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -49,28 +51,36 @@ class ProfileScreen extends StatelessWidget {
                       leading: const Icon(Icons.edit),
                       title: const Text('Profil bearbeiten'),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () {},
+                      onTap: () {
+                        // Navigate to edit profile screen
+                      },
                     ),
                     const Divider(),
                     ListTile(
                       leading: const Icon(Icons.star_border_outlined),
                       title: const Text('Favoriten'),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () {},
+                      onTap: () {
+                        // Navigate to favorites screen
+                      },
                     ),
                     const Divider(),
                     ListTile(
                       leading: const Icon(Icons.settings),
                       title: const Text('Einstellungen'),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () {},
+                      onTap: () {
+                        // Navigate to settings screen
+                      },
                     ),
                     const Divider(),
                     ListTile(
                       leading: const Icon(Icons.person_add),
                       title: const Text('Freunde einladen'),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () {},
+                      onTap: () {
+                        // Navigate to invite friends screen
+                      },
                     ),
                     const Divider(),
                     ListTile(
@@ -82,7 +92,20 @@ class ProfileScreen extends StatelessWidget {
                         'Logout',
                         style: TextStyle(color: Colors.red),
                       ),
-                      onTap: () {},
+                      onTap: () async {
+                        try {
+                          await FirebaseAuth.instance.signOut();
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPages()),
+                          );
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Error during logout: $e')),
+                          );
+                        }
+                      },
                     ),
                   ],
                 ),
