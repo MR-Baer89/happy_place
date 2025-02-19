@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_place/config/colors.dart';
@@ -135,14 +137,19 @@ class LoginProvider extends ChangeNotifier {
         password: password,
       );
 
-      print('User signed in: ${userCredential.user!.email}');
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      log('User signed in: ${userCredential.user!.email}');
+      if (context.mounted) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
+      }
     } on FirebaseAuthException catch (e) {
+      // ignore: avoid_print
       print(e.message);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message!)),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.message!)),
+        );
+      }
     }
   }
 }

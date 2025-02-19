@@ -19,14 +19,18 @@ class LoginProvider extends ChangeNotifier {
         userName: username, password: password);
 
     if (isLoginSuccessful) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
+      if (context.mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Falscher Benutzername oder Passwort')),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Falscher Benutzername oder Passwort')),
+        );
+      }
     }
   }
 }

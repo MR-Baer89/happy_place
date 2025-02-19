@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:happy_place/config/colors.dart';
 import 'package:happy_place/feature/authentication/screens/profile_screen.dart';
@@ -29,7 +31,7 @@ class NavBar extends StatelessWidget {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const SettingScreen()));
       default:
-        print('Invalid navigation index');
+        log('Invalid navigation index');
     }
   }
 
